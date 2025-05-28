@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
           - name: account
-            image: 'rafaelaafferri/account-service:latest'
+            image: rafaelaafferri/account-service:latest
             imagePullPolicy: Always
             ports:
               - containerPort: 8080
