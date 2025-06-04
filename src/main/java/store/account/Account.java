@@ -1,5 +1,6 @@
 package store.account;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Builder;
@@ -8,7 +9,7 @@ import lombok.experimental.Accessors;
 
 @Builder
 @Data @Accessors(fluent = true)
-public class Account {
+public class Account implements Serializable{
 
     private String id;
     private String name;

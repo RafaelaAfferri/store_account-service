@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: account
+  cache:
+    type: redis
 
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT:5432}/store

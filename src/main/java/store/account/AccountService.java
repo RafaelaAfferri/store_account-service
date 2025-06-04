@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class AccountService {
@@ -19,6 +20,7 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Cacheable("accountId")
     public Account findById(String id) {
         return accountRepository.findById(id).get().to();
     }
@@ -33,6 +35,7 @@ public class AccountService {
         return accountRepository.save(new AccountModel(account)).to();
     }
 
+    @Cacheable("accountEmailPassword")
     public Account findByEmailAndPassword(String email, String password) {
         final String sha256 = calcHash(password);
         AccountModel m  = accountRepository.findByEmailAndSha256(email, sha256);
